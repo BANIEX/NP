@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>NP</title>
+</head>
+<body>
+    <button id="danger">DANGER</button>
+    <button id="warning">WARNING</button>
+    <button id="success">SUCCESS</button>    
+    <button id="normal">NORMAL</button>
+
+
+
+
+
+
+
+
+    <script>
+        window.onload = function(){
+            let savedDesigns = localStorage.getItem("designs");
+            console.log(savedDesigns);
+            if(savedDesigns == null || savedDesigns == undefined){
+                document.body.style.background= 'grey';
+                document.body.style.color = 'white';
+            }
+            else{
+                savedDesigns = JSON.parse(savedDesigns);
+                let background = savedDesigns["background"];
+                // apply the design
+                document.body.style.background = background;
+                document.body.style.color = color;
+
+            }
+        }
+
+
+            document.getElementById("danger").addEventListener("click", function(){
+                document.body.style.background = 'red'
+                const designObject = {
+                    'background' : 'red',
+                    'color' : 'white'
+                }
+                
+                let savedDesigns = localStorage.getItem("designs");
+                localStorage.setItem("designs", JSON.stringify(designObject))
+
+            });
+            
+            document.getElementById("warning").addEventListener("click", function(){
+                document.body.style.background = 'yellow'
+                const designObject = {
+                    'background' : 'yellow',
+                    'color' : 'white'
+                }
+                
+                let savedDesigns = localStorage.getItem("designs");
+                localStorage.setItem("designs", JSON.stringify(designObject));
+
+            })
+            
+            document.getElementById("success").addEventListener("click", function(){
+                document.body.style.background = 'green';
+                const designObject = {
+                    'background' : 'green',
+                    'color' : 'white'
+                }
+                
+                let savedDesigns = localStorage.getItem("designs");
+                localStorage.setItem("designs", JSON.stringify(designObject));
+
+            })
+            
+            document.getElementById("normal").addEventListener("click", function(){
+                document.body.style.background = 'grey';
+                const designObject = {
+                    'background' : 'grey',
+                    'color' : 'white'
+                }
+                
+                let savedDesigns = localStorage.getItem("designs");
+                localStorage.removeItem("designs");
+                location.reload();
+
+            })
+
+            
+
+
+
+
+        
+        
+    </script>
+</body>
+</html>
